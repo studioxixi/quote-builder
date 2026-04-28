@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STUDIO XIXI - Calligraphy Quote</title>
+<script>
+  // Load fonts asynchronously — never blocks script execution or page render
+  (function() {
+    try {
+      var l = document.createElement("link");
+      l.rel = "stylesheet";
+      l.href = "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Libre+Franklin:wght@300;400;500&display=swap";
+      document.head.appendChild(l);
+    } catch(e) {}
+  })();
+</script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white: #ffffff;
+    --bg: #fafaf9;
+    --ink: #111111;
+    --ink-mid: #555555;
+    --ink-light: #999999;
+    --border: #e8e8e6;
+    --border-mid: #d0d0ce;
+    --surface: #f4f4f2;
+    --rush: #8b1a1a;
+    --radius: 6px;
+    --radius-sm: 3px;
+  }
+
+  body {
+    font-family: 'Libre Franklin', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .wordmark {
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 48px;
+  }
+
+  h1 {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 40px;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--ink-mid);
+    margin-bottom: 52px;
+  }
+
+  .section { margin-bottom: 40px; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    margin-bottom: 16px;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 36px 0;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  select {
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 9px 11px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.12s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999999' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 28px;
+    cursor: pointer;
+  }
+
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  input[type="date"]:focus,
+  select:focus {
+    border-color: var(--ink);
+    outline: none;
+  }
+
+  input[type="number"] { -moz-appearance: textfield; }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+  .field-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--ink-mid);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .form-row.thirds { grid-template-columns: 1fr 1fr 1fr; }
+  .form-col { display: flex; flex-direction: column; }
+
+  .radio-group { display: flex; gap: 16px; flex-wrap: wrap; padding-top: 2px; }
+  .radio-group.col { flex-direction: column; gap: 8px; }
+
+  .radio-opt {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .radio-opt input[type="radio"] { accent-color: var(--ink); }
+
+  .checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ink);
+    cursor: pointer;
+    margin: 9px 0;
+  }
+
+  .checkbox-row input[type="checkbox"] { accent-color: var(--ink); width: 13px; height: 13px; flex-shrink: 0; }
+
+  .muted {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--ink-light);
+    margin-top: 4px;
+  }
+
+  .item-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 6px;
+    overflow: hidden;
+  }
+
+  .toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    transition: background 0.1s;
+  }
+
+  .toggle-btn:hover { background: var(--surface); }
+
+  .toggle-meta {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-mid);
+    margin-left: 8px;
+  }
+
+  .toggle-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+
+  .chevron {
+    font-size: 9px;
+    color: var(--ink-light);
+    transition: transform 0.15s;
+  }
+
+  .chevron.open { transform: rotate(180deg); }
+
+  .item-form {
+    padding: 0 16px 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .item-form-inner { padding-top: 16px; }
+
+  .remove-btn {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--ink-light);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 16px;
+    float: right;
+    transition: color 0.1s;
+  }
+
+  .remove-btn:hover { color: var(--rush); }
+
+  .add-btns {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+
+  .add-btn {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    background: var(--white);
+    border: 1px solid var(--border-mid);
+    border-radius: var(--radius-sm);
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: border-color 0.1s, background 0.1s;
+  }
+
+  .add-btn:hover { background: var(--surface); border-color: var(--ink); }
+
+  /* Summary */
+  .summary-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+  }
+
+  .summary-client {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 26px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 3px;
+    line-height: 1.2;
+  }
+
+  .summary-date {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--ink-mid);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .sum-item {
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sum-item:last-child { border-bottom: none; }
+
+  .sum-item-head {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .sum-item-detail {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-mid);
+    padding: 1px 0;
+  }
+
+  .sum-subtotals {
+    padding: 10px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+
+  .sum-sub-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-mid);
+    padding: 2px 0;
+  }
+
+  .sum-fees {
+    padding: 10px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .sum-fee-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink);
+    padding: 2px 0;
+  }
+
+  .sum-grand {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 24px;
+    font-weight: 400;
+    padding: 16px 0 0;
+    border-top: 1px solid var(--border-mid);
+    margin-top: 10px;
+  }
+
+  .sum-disclaimer {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--ink-mid);
+    margin-top: 14px;
+  }
+
+  .empty-state {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--ink-light);
+  }
+
+  .copy-btn {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: none;
+    border: 1px solid var(--border-mid);
+    border-radius: var(--radius-sm);
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: inline-block;
+    transition: border-color 0.1s, background 0.1s;
+  }
+
+  .copy-btn:hover { background: var(--surface); border-color: var(--ink); }
+
+  .clearfix::after { content: ""; display: table; clear: both; }
+
+  @media (max-width: 540px) {
+    .page { padding: 32px 16px 72px; }
+    h1 { font-size: 30px; }
+    .wordmark { margin-bottom: 32px; }
+    .subtitle { margin-bottom: 36px; }
+    .divider { margin: 28px 0; }
+    .section { margin-bottom: 28px; }
+
+    .form-row,
+    .form-row.thirds { grid-template-columns: 1fr; }
+
+    .add-btns { flex-direction: column; }
+    .add-btn { width: 100%; text-align: center; padding: 11px 14px; }
+
+    .toggle-btn { padding: 12px 14px; flex-wrap: wrap; gap: 4px; }
+    .toggle-meta { display: block; width: 100%; margin-left: 0; margin-top: 2px; }
+    .toggle-right { font-size: 12px; gap: 8px; }
+
+    .item-form { padding: 0 12px 14px; }
+
+    .summary-box { padding: 18px; }
+    .summary-client { font-size: 22px; }
+    .sum-grand { font-size: 19px; }
+
+    .radio-group:not(.col) { flex-direction: column; gap: 8px; }
+
+    .checkbox-row { padding: 4px 0; min-height: 36px; }
+    .radio-opt { min-height: 32px; }
+
+    .copy-btn { width: 100%; text-align: center; padding: 11px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="wordmark">Studio XIXI</div>
+  <h1>Calligraphy Quote Builder</h1>
+  <p class="subtitle">Pre-tax · Pre-shipping to client · hello@studioxixi.co</p>
+
+  <div class="section">
+    <div class="form-row">
+      <div class="form-col">
+        <p class="field-label">Client name</p>
+        <input type="text" id="clientName" placeholder="e.g. Alexandra + James Chang" />
+      </div>
+      <div class="form-col">
+        <p class="field-label">Mail-out / in-hand date</p>
+        <input type="date" id="mailOutDate" />
+      </div>
+    </div>
+    <div id="timelineInfo" style="margin-top:10px;"></div>
+    <div id="rushSection" style="display:none;margin-top:10px;">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <p class="field-label" style="margin:0;">Rush fee</p>
+        <input type="number" id="rushPct" min="0" max="200" step="1" placeholder="%" style="width:70px;flex-shrink:0;" />
+        <span style="font-family:'Libre Franklin',sans-serif;font-size:11px;font-weight:300;color:var(--ink-light);">% of subtotal</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section">
+    <p class="section-label">Project fees</p>
+    <label class="checkbox-row"><input type="checkbox" id="fSetup" checked /> Setup fee — $75.00</label>
+    <label class="checkbox-row"><input type="checkbox" id="fInk" /> Custom paint mixing — $50.00</label>
+    <label class="checkbox-row"><input type="checkbox" id="fTest" /> Testing fee (unfamiliar surface) — $50.00</label>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section">
+    <p class="section-label">Line items</p>
+    <div id="lineItems"></div>
+    <div class="add-btns">
+      <button class="add-btn" id="btnEnvelope">+ Envelope addressing</button>
+      <button class="add-btn" id="btnPlacecard">+ Place / escort cards</button>
+      <button class="add-btn" id="btnSpot">+ Spot calligraphy</button>
+      <button class="add-btn" id="btnProse">+ Prose piece</button>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section">
+    <p class="section-label">Quote summary</p>
+    <div id="summary"></div>
+  </div>
+
+</div>
+
+<script>
+function esc(str = "") {
+  return String(str).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+}
+
+const STYLE_LABELS = {
+  elizabeth: "Elizabeth — Copperplate",
+  nibBrush: "All other hands (Nib/Brush)",
+  paintPen: "All hands (Paint Pen)"
+};
+
+const TYPE_LABELS = {
+  envelope: "Envelope addressing",
+  placecard: "Place / escort cards",
+  spot: "Spot calligraphy",
+  prose: "Prose piece"
+};
+
+const R = {
+  setup: 75, ink: 50, test: 50,
+  env: {
+    base: { elizabeth: 5.5, nibBrush: 5.0, paintPen: 4.0 },
+    handmade: { elizabeth: 0.5, nibBrush: 0.5, paintPen: 0 },
+    left: -0.5, names: -2.0,
+    raAddr: { elizabeth: 3.5, nibBrush: 3.0, paintPen: 2.5 },
+    raFull: { elizabeth: 4.5, nibBrush: 4.0, paintPen: 3.0 },
+    rsvp: { elizabeth: 4.5, nibBrush: 4.0, paintPen: 3.0 }
+  },
+  pc: {
+    word: { elizabeth: 1.5, nibBrush: 1.25, paintPen: 1.0 },
+    hmWord: { elizabeth: 0.25, nibBrush: 0.25, paintPen: 0 },
+    title: { elizabeth: 0.75, nibBrush: 0.75, paintPen: 0.5 },
+    table: { elizabeth: 0.75, nibBrush: 0.75, paintPen: 0.5 },
+    border: 0.5
+  },
+  spot: { word: { elizabeth: 3.0, nibBrush: 2.5, paintPen: 2.0 }, dig: 50 },
+  prose: { word: { elizabeth: 1.25, nibBrush: 1.0, paintPen: 0.75 } }
+};
+
+const P = { envPack: 20, envSize: 50, pcBatch: 300, tented: 75, flat: 45, ship: 16, spoil: 1.2 };
+
+let items = [], expandedId = null, uid = 0, adjUid = 0;
+
+function fmt(n) {
+  return n.toLocaleString("en-US", { style: "currency", currency: "USD" });
+}
+
+function styleSelect(id, val) {
+  return `<select onchange="upd(${id},'style',this.value)">
+    <option value="elizabeth" ${val==="elizabeth"?"selected":""}>Elizabeth — Copperplate</option>
+    <option value="nibBrush" ${val==="nibBrush"?"selected":""}>All other hands (Nib/Brush)</option>
+    <option value="paintPen" ${val==="paintPen"?"selected":""}>All hands (Paint Pen)</option>
+  </select>`;
+}
+
+function addItem(type) {
+  const id = ++uid;
+  const base = { id, type, style: "elizabeth" };
+  if (type === "envelope") items.push({ ...base, qty: 100, align: "center", surface: "smooth", namesOnly: false, ra: "none", rsvpQty: 0, paper: false });
+  else if (type === "placecard") items.push({ ...base, qty: 100, surface: "smooth", wpCard: 2, titles: false, tableNum: false, border: false, cardType: "flat", paper: false, customAdj: [] });
+  else if (type === "spot") items.push({ ...base, qty: 1, wpPiece: 5, digitize: false });
+  else if (type === "prose") items.push({ ...base, qty: 1, wpPiece: 100 });
+  expandedId = id;
+  render();
+}
+
+function removeItem(id) {
+  items = items.filter(i => i.id !== id);
+  if (expandedId === id) expandedId = null;
+  render();
+}
+
+function toggle(id) {
+  expandedId = expandedId === id ? null : id;
+  render();
+}
+
+function upd(id, key, val) {
+  const item = items.find(i => i.id === id);
+  if (!item) return;
+  if (val === true || val === false) item[key] = val;
+  else if (["qty","rsvpQty","wpCard","wpPiece"].includes(key)) item[key] = Math.max(0, +val || 0);
+  else item[key] = val;
+  render();
+}
+
+function addAdj(itemId) {
+  const item = items.find(i => i.id === itemId);
+  if (!item) return;
+  item.customAdj.push({ id: ++adjUid, desc: "", amount: 0 });
+  render();
+}
+
+function removeAdj(itemId, adjId) {
+  const item = items.find(i => i.id === itemId);
+  if (!item) return;
+  item.customAdj = item.customAdj.filter(a => a.id !== adjId);
+  render();
+}
+
+function updAdj(itemId, adjId, key, val) {
+  const item = items.find(i => i.id === itemId);
+  if (!item) return;
+  const adj = item.customAdj.find(a => a.id === adjId);
+  if (!adj) return;
+  adj[key] = key === "amount" ? (parseFloat(val) || 0) : val;
+  render();
+}
+
+function calcEnv(item) {
+  const s = item.style;
+  let pEnv = R.env.base[s];
+  if (item.surface === "handmade") pEnv += R.env.handmade[s];
+  if (item.align === "left") pEnv += R.env.left;
+  if (item.namesOnly) pEnv += R.env.names;
+  let cal = pEnv * item.qty;
+  let raRate = 0;
+  if (item.ra === "addr") raRate = R.env.raAddr[s];
+  else if (item.ra === "full") raRate = R.env.raFull[s];
+  cal += raRate * item.qty;
+  const rsvp = Number(item.rsvpQty) || 0;
+  cal += rsvp * R.env.rsvp[s];
+  let pap = 0;
+  if (item.paper) {
+    const total = item.qty + rsvp;
+    const needed = Math.ceil(total * P.spoil);
+    const costPerEnv = P.envPack / P.envSize;
+    pap = (needed * costPerEnv + P.ship) * 2;
+  }
+  return { cal, dig: 0, pap, sub: cal + pap, perPiece: pEnv + raRate, perLabel: "envelope" };
+}
+
+function calcPc(item) {
+  const s = item.style;
+  const w = Math.max(1, Number(item.wpCard) || 2);
+  let pCard = R.pc.word[s] * w;
+  if (item.surface === "handmade") pCard += R.pc.hmWord[s] * w;
+  if (item.titles) pCard += R.pc.title[s];
+  if (item.tableNum) pCard += R.pc.table[s];
+  if (item.border) pCard += R.pc.border;
+  const adjPerCard = (item.customAdj || []).reduce((sum, a) => sum + (Number(a.amount) || 0), 0);
+  pCard += adjPerCard;
+  const cal = pCard * item.qty;
+  let pap = 0;
+  if (item.paper) {
+    const needed = Math.ceil(item.qty * P.spoil);
+    const bCost = item.cardType === "tented" ? P.tented : P.flat;
+    pap = (needed * (bCost / P.pcBatch) + P.ship) * 2;
+  }
+  return { cal, dig: 0, pap, sub: cal + pap, perPiece: pCard, perLabel: "card" };
+}
+
+function calcSpot(item) {
+  const s = item.style;
+  const qty = Math.max(1, Number(item.qty) || 1);
+  const w = Math.max(1, Number(item.wpPiece) || 1);
+  const cal = qty * w * R.spot.word[s];
+  const dig = item.digitize ? R.spot.dig : 0;
+  const perPiece = w * R.spot.word[s];
+  return { cal, dig, pap: 0, sub: cal + dig, perPiece, perLabel: "piece" };
+}
+
+function calcProse(item) {
+  const s = item.style;
+  const qty = Math.max(1, Number(item.qty) || 1);
+  const w = Math.max(1, Number(item.wpPiece) || 1);
+  const cal = qty * w * R.prose.word[s];
+  const perPiece = w * R.prose.word[s];
+  return { cal, dig: 0, pap: 0, sub: cal, perPiece, perLabel: "piece" };
+}
+
+function calc(item) {
+  if (item.type === "envelope") return calcEnv(item);
+  if (item.type === "placecard") return calcPc(item);
+  if (item.type === "spot") return calcSpot(item);
+  if (item.type === "prose") return calcProse(item);
+}
+
+function envForm(item) {
+  const id = item.id;
+  return `
+    <div class="form-row">
+      <div class="form-col"><p class="field-label">Hand style</p>${styleSelect(id, item.style)}</div>
+      <div class="form-col"><p class="field-label">Quantity</p><input type="number" min="1" value="${item.qty}" onchange="upd(${id},'qty',this.value)" /></div>
+    </div>
+    <div class="form-row">
+      <div class="form-col">
+        <p class="field-label">Alignment</p>
+        <div class="radio-group">
+          <label class="radio-opt"><input type="radio" name="al${id}" value="center" ${item.align==="center"?"checked":""} onchange="upd(${id},'align','center')" /> Center</label>
+          <label class="radio-opt"><input type="radio" name="al${id}" value="left" ${item.align==="left"?"checked":""} onchange="upd(${id},'align','left')" /> Left (−$0.50)</label>
+        </div>
+      </div>
+      <div class="form-col">
+        <p class="field-label">Paper surface</p>
+        <div class="radio-group">
+          <label class="radio-opt"><input type="radio" name="sf${id}" value="smooth" ${item.surface==="smooth"?"checked":""} onchange="upd(${id},'surface','smooth')" /> Smooth</label>
+          <label class="radio-opt"><input type="radio" name="sf${id}" value="handmade" ${item.surface==="handmade"?"checked":""} onchange="upd(${id},'surface','handmade')" /> Handmade (+$0.50)</label>
+        </div>
+      </div>
+    </div>
+    <label class="checkbox-row"><input type="checkbox" ${item.namesOnly?"checked":""} onchange="upd(${id},'namesOnly',this.checked)" /> Names only (−$2.00/envelope)</label>
+    <div style="margin:12px 0;">
+      <p class="field-label">Return address (back flap)</p>
+      <div class="radio-group col">
+        <label class="radio-opt"><input type="radio" name="ra${id}" value="none" ${item.ra==="none"?"checked":""} onchange="upd(${id},'ra','none')" /> None</label>
+        <label class="radio-opt"><input type="radio" name="ra${id}" value="addr" ${item.ra==="addr"?"checked":""} onchange="upd(${id},'ra','addr')" /> Address only</label>
+        <label class="radio-opt"><input type="radio" name="ra${id}" value="full" ${item.ra==="full"?"checked":""} onchange="upd(${id},'ra','full')" /> Address + names</label>
+      </div>
+    </div>
+    <div style="margin:12px 0;">
+      <p class="field-label">RSVP envelopes (qty, 0 if none)</p>
+      <input type="number" min="0" value="${item.rsvpQty}" onchange="upd(${id},'rsvpQty',this.value)" style="width:120px;" />
+    </div>
+    <label class="checkbox-row"><input type="checkbox" ${item.paper?"checked":""} onchange="upd(${id},'paper',this.checked)" /> Include paper cost</label>`;
+}
+
+function pcForm(item) {
+  const id = item.id;
+  return `
+    <div class="form-row">
+      <div class="form-col"><p class="field-label">Hand style</p>${styleSelect(id, item.style)}</div>
+      <div class="form-col"><p class="field-label">Quantity</p><input type="number" min="1" value="${item.qty}" onchange="upd(${id},'qty',this.value)" /></div>
+    </div>
+    <div class="form-row">
+      <div class="form-col">
+        <p class="field-label">Avg words per card</p>
+        <input type="number" min="1" value="${item.wpCard}" onchange="upd(${id},'wpCard',this.value)" />
+        <p class="muted">First + last name = 2 words</p>
+      </div>
+      <div class="form-col">
+        <p class="field-label">Paper surface</p>
+        <div class="radio-group col">
+          <label class="radio-opt"><input type="radio" name="ps${id}" value="smooth" ${item.surface==="smooth"?"checked":""} onchange="upd(${id},'surface','smooth')" /> Smooth</label>
+          <label class="radio-opt"><input type="radio" name="ps${id}" value="handmade" ${item.surface==="handmade"?"checked":""} onchange="upd(${id},'surface','handmade')" /> Handmade</label>
+        </div>
+      </div>
+    </div>
+    <label class="checkbox-row"><input type="checkbox" ${item.titles?"checked":""} onchange="upd(${id},'titles',this.checked)" /> Include titles (Mr, Mrs, etc) — +$0.75/card</label>
+    <label class="checkbox-row"><input type="checkbox" ${item.tableNum?"checked":""} onchange="upd(${id},'tableNum',this.checked)" /> Include table assignment — +$0.75/card</label>
+    <label class="checkbox-row"><input type="checkbox" ${item.border?"checked":""} onchange="upd(${id},'border',this.checked)" /> Include border — +$0.50/card</label>
+    <div style="margin:12px 0;">
+      <p class="field-label">Card type</p>
+      <div class="radio-group">
+        <label class="radio-opt"><input type="radio" name="ct${id}" value="flat" ${item.cardType==="flat"?"checked":""} onchange="upd(${id},'cardType','flat')" /> Flat</label>
+        <label class="radio-opt"><input type="radio" name="ct${id}" value="tented" ${item.cardType==="tented"?"checked":""} onchange="upd(${id},'cardType','tented')" /> Tented</label>
+      </div>
+    </div>
+    <label class="checkbox-row"><input type="checkbox" ${item.paper?"checked":""} onchange="upd(${id},'paper',this.checked)" /> Include paper cost</label>
+    <div style="margin:14px 0 0;">
+      <p class="field-label" style="margin-bottom:8px;">Custom adjustments (per card)</p>
+      ${(item.customAdj||[]).map(a => `
+        <div style="display:flex;gap:8px;margin-bottom:6px;align-items:center;flex-wrap:wrap;">
+          <input type="text" placeholder="Description" value="${a.desc.replace(/"/g,'&quot;')}" onchange="updAdj(${id},${a.id},'desc',this.value)" style="flex:1;min-width:120px;" />
+          <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+            <input type="number" step="0.01" placeholder="0.00" value="${a.amount||''}" onchange="updAdj(${id},${a.id},'amount',this.value)" style="width:80px;" />
+            <span style="font-size:11px;font-weight:300;color:var(--ink-light);white-space:nowrap;">/card</span>
+            <button onclick="removeAdj(${id},${a.id})" style="background:none;border:none;cursor:pointer;font-size:16px;color:var(--ink-light);line-height:1;padding:0 2px;">×</button>
+          </div>
+        </div>`).join("")}
+      <button onclick="addAdj(${id})" style="font-family:'Libre Franklin',sans-serif;font-size:10px;font-weight:400;letter-spacing:0.08em;color:var(--ink-mid);background:none;border:1px dashed var(--border-mid);border-radius:var(--radius-sm);padding:6px 12px;cursor:pointer;margin-top:4px;">+ Add adjustment</button>
+    </div>`;}
+
+function spotForm(item) {
+  const id = item.id;
+  return `
+    <div class="form-row">
+      <div class="form-col"><p class="field-label">Hand style</p>${styleSelect(id, item.style)}</div>
+      <div class="form-col"><p class="field-label">Number of pieces</p><input type="number" min="1" value="${item.qty}" onchange="upd(${id},'qty',this.value)" /></div>
+    </div>
+    <div class="form-col" style="max-width:200px;">
+      <p class="field-label">Words per piece</p>
+      <input type="number" min="1" value="${item.wpPiece}" onchange="upd(${id},'wpPiece',this.value)" />
+    </div>
+    <label class="checkbox-row" style="margin-top:12px;"><input type="checkbox" ${item.digitize?"checked":""} onchange="upd(${id},'digitize',this.checked)" /> Include digitization to SVG/PNG — +$50.00</label>`;
+}
+
+function proseForm(item) {
+  const id = item.id;
+  return `
+    <div class="form-row">
+      <div class="form-col"><p class="field-label">Hand style</p>${styleSelect(id, item.style)}</div>
+      <div class="form-col"><p class="field-label">Number of pieces</p><input type="number" min="1" value="${item.qty}" onchange="upd(${id},'qty',this.value)" /></div>
+    </div>
+    <div class="form-col" style="max-width:200px;">
+      <p class="field-label">Words per piece</p>
+      <input type="number" min="1" value="${item.wpPiece}" onchange="upd(${id},'wpPiece',this.value)" />
+    </div>`;
+}
+
+function calcDeadlineWeeks() {
+  if (!items.length) return 2;
+  return items.reduce((max, item) => {
+    const qty = Number(item.qty) || 0;
+    const rsvp = Number(item.rsvpQty) || 0;
+    let w;
+    if (item.type === "envelope") {
+      w = 2 + Math.ceil(Math.max(0, (qty + rsvp) - 50) / 50);
+    } else if (item.type === "spot" || item.type === "prose") {
+      const totalWords = qty * (Number(item.wpPiece) || 1);
+      w = 2 + Math.ceil(Math.max(0, qty - 100) / 100)
+            + Math.ceil(Math.max(0, totalWords - 200) / 100);
+    } else {
+      w = 2 + Math.ceil(Math.max(0, qty - 100) / 100);
+    }
+    return Math.max(max, w);
+  }, 2);
+}
+
+function getContentDeadline() {
+  const dateVal = document.getElementById("mailOutDate").value;
+  if (!dateVal) return null;
+  const mailOut = new Date(dateVal + "T12:00:00");
+  const weeks = calcDeadlineWeeks();
+  const deadline = new Date(mailOut);
+  deadline.setDate(deadline.getDate() - weeks * 7);
+  return deadline;
+}
+
+function getRushFee(subtotal) {
+  const deadline = getContentDeadline();
+  if (!deadline) return 0;
+  const today = new Date(); today.setHours(12,0,0,0);
+  if (deadline > today) return 0;
+  const pct = parseFloat(document.getElementById("rushPct").value) || 0;
+  return subtotal * pct / 100;
+}
+
+function renderTimeline() {
+  const infoEl = document.getElementById("timelineInfo");
+  const rushSection = document.getElementById("rushSection");
+  const dateVal = document.getElementById("mailOutDate").value;
+  if (!dateVal) { infoEl.innerHTML = ""; rushSection.style.display = "none"; return; }
+
+  const mailOut = new Date(dateVal + "T12:00:00");
+  const today = new Date(); today.setHours(12,0,0,0);
+  const weeks = calcDeadlineWeeks();
+  const deadline = getContentDeadline();
+
+  const deadlineFmt = deadline.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  const mailOutFmt = mailOut.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+
+  const rush = deadline <= today;
+  rushSection.style.display = rush ? "block" : "none";
+
+  const color = rush ? "var(--rush)" : "var(--ink-mid)";
+  const prefix = rush ? "⚠ Rush · " : "";
+  infoEl.innerHTML = `<p style="font-family:'Libre Franklin',sans-serif;font-size:12px;font-weight:300;color:${color};margin:0;letter-spacing:0.02em;">${prefix}Content needed by <strong style="font-weight:500;">${deadlineFmt}</strong> <span style="color:var(--ink-light);">· ${weeks}-week turnaround for ${mailOutFmt}</span></p>`;
+}
+
+function renderItems() {
+  const el = document.getElementById("lineItems");
+  if (!items.length) { el.innerHTML = ""; return; }
+  el.innerHTML = items.map(item => {
+    const c = calc(item);
+    const open = expandedId === item.id;
+    let form = "";
+    if (item.type === "envelope") form = envForm(item);
+    else if (item.type === "placecard") form = pcForm(item);
+    else if (item.type === "spot") form = spotForm(item);
+    else if (item.type === "prose") form = proseForm(item);
+    return `<div class="item-card">
+      <button class="toggle-btn" onclick="toggle(${item.id})">
+        <span>${TYPE_LABELS[item.type]}<span class="toggle-meta">· qty ${item.qty} · ${fmt(c.perPiece)}/${c.perLabel}</span></span>
+        <span class="toggle-right">
+          ${fmt(c.sub)}
+          <span class="chevron ${open?"open":""}">▼</span>
+        </span>
+      </button>
+      ${open ? `<div class="item-form"><div class="item-form-inner">${form}<div class="clearfix"><button class="remove-btn" onclick="removeItem(${item.id})">Remove item</button></div></div></div>` : ""}
+    </div>`;
+  }).join("");
+}
+
+function buildPlainText(name, today, items, setup, ink, test, rushFee, rushPct, deadlineStr) {
+  let out = "STUDIO XIXI — CALLIGRAPHY QUOTE\n";
+  out += "=".repeat(40) + "\n";
+  if (name) out += name + "\n";
+  out += today + " · Pre-tax · Pre-shipping\n";
+  if (deadlineStr) out += "Content needed by: " + deadlineStr + "\n";
+  out += "\n";
+
+  let calSum = 0, papSum = 0;
+
+  items.forEach(item => {
+    const c = calc(item);
+    calSum += c.cal + c.dig;
+    papSum += c.pap;
+    out += TYPE_LABELS[item.type] + " × " + item.qty + "\n";
+    out += "  " + STYLE_LABELS[item.style];
+    if (item.type === "envelope") {
+      if (item.align === "left") out += ", left aligned";
+      if (item.surface === "handmade") out += ", handmade paper";
+      if (item.namesOnly) out += ", names only";
+      if (item.ra === "addr") out += ", return address";
+      if (item.ra === "full") out += ", return address + names";
+      if (Number(item.rsvpQty) > 0) out += ", " + item.rsvpQty + " RSVP envelopes";
+    } else if (item.type === "placecard") {
+      out += ", " + item.cardType;
+      if (item.titles) out += ", titles";
+      if (item.tableNum) out += ", table no.";
+      if (item.border) out += ", border";
+      (item.customAdj||[]).forEach(a => { if (a.desc) out += ", " + a.desc; });
+    } else if (item.type === "spot") {
+      out += ", " + item.wpPiece + " words/piece";
+      if (item.digitize) out += ", digitization";
+    } else if (item.type === "prose") {
+      out += ", " + item.wpPiece + " words/piece";
+    }
+    out += "\n";
+    if (item.type === "envelope") {
+      const rsvp = Number(item.rsvpQty) || 0;
+      out += "  " + fmt(c.perPiece) + "/envelope × " + item.qty + " = " + fmt(c.perPiece * item.qty) + "\n";
+      if (rsvp > 0) out += "  RSVP envelopes × " + rsvp + " = " + fmt(R.env.rsvp[item.style] * rsvp) + "\n";
+    } else if (item.type === "spot") {
+      out += "  " + fmt(c.perPiece) + "/piece × " + item.qty + " = " + fmt(c.cal) + "\n";
+      if (item.digitize) out += "  Digitization = " + fmt(R.spot.dig) + "\n";
+    } else {
+      out += "  " + fmt(c.perPiece) + "/" + c.perLabel + " × " + item.qty + " = " + fmt(c.cal) + "\n";
+    }
+    if (c.pap > 0) out += "  Paper: " + fmt(c.pap) + "\n";
+    out += "  Subtotal: " + fmt(c.sub) + "\n\n";
+  });
+
+  out += "-".repeat(40) + "\n";
+  out += "Calligraphy services: " + fmt(calSum) + "\n";
+  if (papSum > 0) out += "Paper & materials: " + fmt(papSum) + "\n";
+  if (setup) out += "Setup fee: " + fmt(setup) + "\n";
+  if (ink) out += "Custom paint mixing: " + fmt(ink) + "\n";
+  if (test) out += "Testing fee: " + fmt(test) + "\n";
+  if (rushFee > 0) out += "Rush fee (" + rushPct + "%): " + fmt(rushFee) + "\n";
+  out += "=".repeat(40) + "\n";
+  out += "ESTIMATE TOTAL: " + fmt(calSum + papSum + setup + ink + test + rushFee) + "\n\n";
+  out += "Estimate only. Final pricing subject to project scope and materials.\n";
+  out += "hello@studioxixi.co";
+  return out;
+}
+
+function renderSummary() {
+  const el = document.getElementById("summary");
+  const setup = document.getElementById("fSetup").checked ? R.setup : 0;
+  const ink = document.getElementById("fInk").checked ? R.ink : 0;
+  const test = document.getElementById("fTest").checked ? R.test : 0;
+  const name = document.getElementById("clientName").value.trim();
+
+  if (!items.length && !setup && !ink && !test) {
+    el.innerHTML = `<p class="empty-state">Add line items above to generate a quote.</p>`;
+    return;
+  }
+
+  const today = new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  let calSum = 0, papSum = 0;
+
+  const itemRows = items.map(item => {
+    const c = calc(item);
+    calSum += c.cal + c.dig;
+    papSum += c.pap;
+
+    let tags = [STYLE_LABELS[item.style]];
+    if (item.type === "envelope") {
+      if (item.align === "left") tags.push("left aligned");
+      if (item.surface === "handmade") tags.push("handmade paper");
+      if (item.namesOnly) tags.push("names only");
+      if (item.ra === "addr") tags.push("return address");
+      if (item.ra === "full") tags.push("return address + names");
+      if (Number(item.rsvpQty) > 0) tags.push(item.rsvpQty + " RSVP envelopes");
+    } else if (item.type === "placecard") {
+      tags.push(item.cardType);
+      if (item.titles) tags.push("titles");
+      if (item.tableNum) tags.push("table no.");
+      if (item.border) tags.push("border");
+      (item.customAdj||[]).forEach(a => { if (a.desc) tags.push(esc(a.desc)); });
+    } else if (item.type === "spot") {
+      tags.push(item.wpPiece + " words/piece");
+      if (item.digitize) tags.push("digitization");
+    } else if (item.type === "prose") {
+      tags.push(item.wpPiece + " words/piece");
+    }
+
+    return `<div class="sum-item">
+      <div class="sum-item-head"><span>${TYPE_LABELS[item.type]} × ${item.qty}</span><span>${fmt(c.sub)}</span></div>
+      <div class="sum-item-detail"><span>${tags.join(" · ")}</span><span>${fmt(c.perPiece)}/${c.perLabel}</span></div>
+      ${c.dig > 0 ? `<div class="sum-item-detail"><span style="padding-left:12px;">Digitization</span><span>${fmt(c.dig)}</span></div>` : ""}
+      ${c.pap > 0 ? `<div class="sum-item-detail"><span style="padding-left:12px;">Paper</span><span>${fmt(c.pap)}</span></div>` : ""}
+    </div>`;
+  }).join("");
+
+  const feeLines = [
+    setup ? `<div class="sum-fee-line"><span>Setup fee</span><span>${fmt(setup)}</span></div>` : "",
+    ink   ? `<div class="sum-fee-line"><span>Custom paint mixing</span><span>${fmt(ink)}</span></div>` : "",
+    test  ? `<div class="sum-fee-line"><span>Testing fee</span><span>${fmt(test)}</span></div>` : ""
+  ].filter(Boolean).join("");
+
+  const subtotal = calSum + papSum + setup + ink + test;
+  const rushFee = getRushFee(subtotal);
+  const rushPct = parseFloat(document.getElementById("rushPct")?.value) || 0;
+  const grand = subtotal + rushFee;
+
+  el.innerHTML = `<div class="summary-box">
+    ${name ? `<p class="summary-client">${esc(name)}</p>` : ""}
+    <p class="summary-date">${today} · Pre-tax · Pre-shipping to client</p>
+    ${itemRows}
+    ${items.length ? `<div class="sum-subtotals">
+      <div class="sum-sub-line"><span>Calligraphy services</span><span>${fmt(calSum)}</span></div>
+      ${papSum > 0 ? `<div class="sum-sub-line"><span>Paper & materials</span><span>${fmt(papSum)}</span></div>` : ""}
+    </div>` : ""}
+    ${feeLines ? `<div class="sum-fees">${feeLines}</div>` : ""}
+    ${rushFee > 0 ? `<div class="sum-fees"><div class="sum-fee-line" style="color:var(--rush);"><span>Rush fee (${rushPct}%)</span><span>${fmt(rushFee)}</span></div></div>` : ""}
+    <div class="sum-grand"><span>Estimate total</span><span>${fmt(grand)}</span></div>
+    <p class="sum-disclaimer">Estimate only · Final pricing subject to project scope and materials</p>
+    <button class="copy-btn" onclick="copyQuote()">Copy quote as text</button>
+  </div>`;
+}
+
+function copyQuote() {
+  const setup = document.getElementById("fSetup").checked ? R.setup : 0;
+  const ink   = document.getElementById("fInk").checked   ? R.ink   : 0;
+  const test  = document.getElementById("fTest").checked  ? R.test  : 0;
+  const name  = document.getElementById("clientName").value.trim();
+  const today = new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  const subtotal = items.reduce((s, item) => { const c = calc(item); return s + c.cal + c.dig + c.pap; }, 0) + setup + ink + test;
+  const rushFee = getRushFee(subtotal);
+  const rushPct = parseFloat(document.getElementById("rushPct").value) || 0;
+  let deadlineStr = "";
+  const dateVal = document.getElementById("mailOutDate").value;
+  if (dateVal) {
+    const mailOut = new Date(dateVal + "T12:00:00");
+    const weeks = calcDeadlineWeeks();
+    const deadline = new Date(mailOut);
+    deadline.setDate(deadline.getDate() - weeks * 7);
+    deadlineStr = deadline.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  }
+  const text = buildPlainText(name, today, items, setup, ink, test, rushFee, rushPct, deadlineStr);
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed";
+  ta.style.opacity = "0";
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  const success = document.execCommand("copy");
+  document.body.removeChild(ta);
+  if (!success && navigator.clipboard) {
+    navigator.clipboard.writeText(text).catch(() => {});
+  }
+  const btn = document.querySelector(".copy-btn");
+  if (btn) { btn.textContent = "Copied!"; setTimeout(() => { btn.textContent = "Copy quote as text"; }, 2000); }
+}
+
+function render() {
+  try {
+    renderTimeline();
+    renderItems();
+    renderSummary();
+  } catch(e) {
+    console.error("Render error:", e);
+  }
+}
+
+// Wire up static controls via addEventListener for maximum mobile compatibility
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("btnEnvelope").addEventListener("click", function() { addItem("envelope"); });
+  document.getElementById("btnPlacecard").addEventListener("click", function() { addItem("placecard"); });
+  document.getElementById("btnSpot").addEventListener("click", function() { addItem("spot"); });
+  document.getElementById("btnProse").addEventListener("click", function() { addItem("prose"); });
+
+  document.getElementById("clientName").addEventListener("input", render);
+  document.getElementById("mailOutDate").addEventListener("change", render);
+  document.getElementById("rushPct").addEventListener("change", render);
+  document.getElementById("fSetup").addEventListener("change", render);
+  document.getElementById("fInk").addEventListener("change", render);
+  document.getElementById("fTest").addEventListener("change", render);
+
+  render();
+});
+</script>
+</body>
+</html>
