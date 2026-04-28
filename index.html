@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>STUDIO XIXI - Calligraphy Quote</title>
 <script>
-  // Load fonts asynchronously — never blocks script execution or page render
+  // Load Adobe Fonts (Typekit) — non-blocking
   (function() {
     try {
       var l = document.createElement("link");
       l.rel = "stylesheet";
-      l.href = "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Libre+Franklin:wght@300;400;500&display=swap";
+      l.href = "https://use.typekit.net/mog0ylg.css";
       document.head.appendChild(l);
     } catch(e) {}
   })();
@@ -33,7 +33,7 @@
   }
 
   body {
-    font-family: 'Libre Franklin', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'franklin-gothic-urw', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 400;
     background: var(--bg);
     color: var(--ink);
@@ -50,7 +50,7 @@
   }
 
   .wordmark {
-    font-family: 'Libre Franklin', sans-serif;
+    font-family: 'franklin-gothic-urw', sans-serif;
     font-weight: 400;
     font-size: 10px;
     letter-spacing: 0.28em;
@@ -60,7 +60,7 @@
   }
 
   h1 {
-    font-family: 'EB Garamond', Georgia, serif;
+    font-family: 'garamond-premier-pro', Georgia, serif;
     font-size: 40px;
     font-weight: 400;
     font-style: normal;
@@ -99,7 +99,7 @@
   input[type="number"],
   input[type="date"],
   select {
-    font-family: 'Libre Franklin', sans-serif;
+    font-family: 'franklin-gothic-urw', sans-serif;
     font-weight: 400;
     font-size: 14px;
     color: var(--ink);
@@ -206,7 +206,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Libre Franklin', sans-serif;
+    font-family: 'franklin-gothic-urw', sans-serif;
     font-size: 14px;
     font-weight: 500;
     color: var(--ink);
@@ -248,7 +248,7 @@
   .item-form-inner { padding-top: 16px; }
 
   .remove-btn {
-    font-family: 'Libre Franklin', sans-serif;
+    font-family: 'franklin-gothic-urw', sans-serif;
     font-size: 11px;
     font-weight: 300;
     letter-spacing: 0.04em;
@@ -272,7 +272,7 @@
   }
 
   .add-btn {
-    font-family: 'Libre Franklin', sans-serif;
+    font-family: 'franklin-gothic-urw', sans-serif;
     font-size: 11px;
     font-weight: 400;
     letter-spacing: 0.06em;
@@ -296,7 +296,7 @@
   }
 
   .summary-client {
-    font-family: 'EB Garamond', Georgia, serif;
+    font-family: 'garamond-premier-pro', Georgia, serif;
     font-size: 26px;
     font-weight: 300;
     font-style: italic;
@@ -370,7 +370,7 @@
   .sum-grand {
     display: flex;
     justify-content: space-between;
-    font-family: 'EB Garamond', Georgia, serif;
+    font-family: 'garamond-premier-pro', Georgia, serif;
     font-size: 24px;
     font-weight: 400;
     padding: 16px 0 0;
@@ -393,7 +393,7 @@
   }
 
   .copy-btn {
-    font-family: 'Libre Franklin', sans-serif;
+    font-family: 'franklin-gothic-urw', sans-serif;
     font-size: 10px;
     font-weight: 400;
     letter-spacing: 0.1em;
@@ -451,7 +451,7 @@
 
   <div class="wordmark">Studio XIXI</div>
   <h1>Calligraphy Quote Builder</h1>
-  <p class="subtitle">Pre-tax · Pre-shipping to client · hello@studioxixi.co</p>
+  <p class="subtitle">Pre-tax · Shipping not included · hello@studioxixi.co</p>
 
   <div class="section">
     <div class="form-row">
@@ -469,7 +469,7 @@
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
         <p class="field-label" style="margin:0;">Rush fee</p>
         <input type="number" id="rushPct" min="0" max="200" step="1" placeholder="%" style="width:70px;flex-shrink:0;" />
-        <span style="font-family:'Libre Franklin',sans-serif;font-size:11px;font-weight:300;color:var(--ink-light);">% of subtotal</span>
+        <span style="font-family:'franklin-gothic-urw',sans-serif;font-size:11px;font-weight:300;color:var(--ink-light);">% of subtotal</span>
       </div>
     </div>
   </div>
@@ -490,7 +490,7 @@
     <div id="lineItems"></div>
     <div class="add-btns">
       <button class="add-btn" id="btnEnvelope">+ Envelope addressing</button>
-      <button class="add-btn" id="btnPlacecard">+ Place / escort cards</button>
+      <button class="add-btn" id="btnPlacecard">+ Place cards / Escort cards</button>
       <button class="add-btn" id="btnSpot">+ Spot calligraphy</button>
       <button class="add-btn" id="btnProse">+ Prose piece</button>
     </div>
@@ -518,7 +518,7 @@ const STYLE_LABELS = {
 
 const TYPE_LABELS = {
   envelope: "Envelope addressing",
-  placecard: "Place / escort cards",
+  placecard: "Place cards / Escort cards",
   spot: "Spot calligraphy",
   prose: "Prose piece"
 };
@@ -765,7 +765,7 @@ function pcForm(item) {
             <button onclick="removeAdj(${id},${a.id})" style="background:none;border:none;cursor:pointer;font-size:16px;color:var(--ink-light);line-height:1;padding:0 2px;">×</button>
           </div>
         </div>`).join("")}
-      <button onclick="addAdj(${id})" style="font-family:'Libre Franklin',sans-serif;font-size:10px;font-weight:400;letter-spacing:0.08em;color:var(--ink-mid);background:none;border:1px dashed var(--border-mid);border-radius:var(--radius-sm);padding:6px 12px;cursor:pointer;margin-top:4px;">+ Add adjustment</button>
+      <button onclick="addAdj(${id})" style="font-family:'franklin-gothic-urw',sans-serif;font-size:10px;font-weight:400;letter-spacing:0.08em;color:var(--ink-mid);background:none;border:1px dashed var(--border-mid);border-radius:var(--radius-sm);padding:6px 12px;cursor:pointer;margin-top:4px;">+ Add adjustment</button>
     </div>`;}
 
 function spotForm(item) {
@@ -852,7 +852,7 @@ function renderTimeline() {
 
   const color = rush ? "var(--rush)" : "var(--ink-mid)";
   const prefix = rush ? "⚠ Rush · " : "";
-  infoEl.innerHTML = `<p style="font-family:'Libre Franklin',sans-serif;font-size:12px;font-weight:300;color:${color};margin:0;letter-spacing:0.02em;">${prefix}Content needed by <strong style="font-weight:500;">${deadlineFmt}</strong> <span style="color:var(--ink-light);">· ${weeks}-week turnaround for ${mailOutFmt}</span></p>`;
+  infoEl.innerHTML = `<p style="font-family:'franklin-gothic-urw',sans-serif;font-size:12px;font-weight:300;color:${color};margin:0;letter-spacing:0.02em;">${prefix}Content needed by <strong style="font-weight:500;">${deadlineFmt}</strong> <span style="color:var(--ink-light);">· ${weeks}-week turnaround for ${mailOutFmt}</span></p>`;
 }
 
 function renderItems() {
@@ -883,7 +883,7 @@ function buildPlainText(name, today, items, setup, ink, test, rushFee, rushPct, 
   let out = "STUDIO XIXI — CALLIGRAPHY QUOTE\n";
   out += "=".repeat(40) + "\n";
   if (name) out += name + "\n";
-  out += today + " · Pre-tax · Pre-shipping\n";
+  out += today + " · Pre-tax · Shipping not included\n";
   if (deadlineStr) out += "Content needed by: " + deadlineStr + "\n";
   out += "\n";
 
@@ -1005,7 +1005,7 @@ function renderSummary() {
 
   el.innerHTML = `<div class="summary-box">
     ${name ? `<p class="summary-client">${esc(name)}</p>` : ""}
-    <p class="summary-date">${today} · Pre-tax · Pre-shipping to client</p>
+    <p class="summary-date">${today} · Pre-tax · Shipping not included</p>
     ${itemRows}
     ${items.length ? `<div class="sum-subtotals">
       <div class="sum-sub-line"><span>Calligraphy services</span><span>${fmt(calSum)}</span></div>
